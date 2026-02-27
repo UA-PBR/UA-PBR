@@ -48,9 +48,9 @@ UA-PBR (Ours)	   48.5%	    0.3355	        <0.0001
 ```python
 @article{yourname2024uapbr,
   title={UA-PBR: Uncertainty-Aware Classifier with Physics-Based Rejection},
-  author={Your Name},
+  author={Mohsen Mostafa Sayed},
   journal={Journal of Computational Physics},
-  year={2024}
+  year={2026}
 }
 ```
 
