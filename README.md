@@ -44,4 +44,15 @@ Standard CNN	   49.0%	    0.5126        	-
 MC Dropout Only	 46.4%	    -	              -
 UA-PBR (Ours)	   48.5%	    0.3355	        <0.0001
 
+📚 Citation
+```python
+@article{yourname2024uapbr,
+  title={UA-PBR: Uncertainty-Aware Classifier with Physics-Based Rejection},
+  author={Your Name},
+  journal={Journal of Computational Physics},
+  year={2024}
+}
+```
+
+
 
