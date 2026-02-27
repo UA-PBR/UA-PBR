@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Data
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.mat
+*.raw
+data/
+digital_rocks_data/
+mendeley_data/
+imperial_rock_data/
+
+# Results
+results/
+logs/
+checkpoints/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
