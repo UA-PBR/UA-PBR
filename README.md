@@ -25,7 +25,23 @@ UA-PBR integrates three key components:
 ## 🚀 Quick Start
 
 ### Installation
-```bash
+```python
 git clone https://github.com/yourusername/UA-PBR.git
 cd UA-PBR
 pip install -r requirements.txt
+```
+Run Complete Experiment
+```python
+from uapbr.config.default_config import get_config
+from experiments.run_experiment import run_uapbr_experiment
+
+config = get_config('full_experiment')
+results = run_uapbr_experiment(config)
+```
+📊 Results
+Method	         Accuracy	  Risk (λ=0.3)	  p-value
+Standard CNN	   49.0%	    0.5126        	-
+MC Dropout Only	 46.4%	    -	              -
+UA-PBR (Ours)	   48.5%	    0.3355	        <0.0001
+
+
