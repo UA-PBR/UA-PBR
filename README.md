@@ -16,10 +16,10 @@ Deep learning classifiers deployed in scientific settings cannot distinguish bet
 
 ## 🔬 Key Results (10 seeds)
 
-| Condition       | UA-PBR Risk    | Std CNN Risk     | Improvement |
-|-----------      |----------------|--------------|-------------|
-| Clean           |0.0310 ± 0.0021 | 0.0021 ± 0.0016 | — |
-| Gaussian (0.9)  | 0.0393 ± 0.0042 | 0.5005 ± 0.0136 | 92.1% |
+| Condition | UA-PBR Risk | Std CNN Risk | Improvement |
+|-----------|-------------|--------------|-------------|
+| Clean | 0.0310 ± 0.0021 | 0.0021 ± 0.0016 | — |
+| Gaussian (0.9) | 0.0393 ± 0.0042 | 0.5005 ± 0.0136 | 92.1% |
 | Salt-Pepper (0.9) | 0.0598 ± 0.0157 | 0.5005 ± 0.0136 | 88.0% |
 | Physics-Violating (0.9) | 0.0338 ± 0.0040 | 0.5005 ± 0.0137 | 93.2% |
 
