@@ -79,3 +79,86 @@ python experiments/run_experiment.py --seed 42
   year={2026}
 }
 ```
+Configuration management.
+```python
+config = Config(
+    n_samples=10000,
+    ae_epochs=150,
+    cnn_epochs=200,
+    lambda_cost=0.3
+)
+```
+Data Module
+RockDataset
+
+Darcy flow dataset.
+```python
+dataset = RockDataset(n_samples=10000, resolution=32)
+u, a, labels = dataset[idx]
+```
+CorruptionGenerator
+
+Generate corrupted test data.
+```python
+u_corr = CorruptionGenerator.apply(u, 'gaussian', severity=0.5)
+```
+Models
+PhysicsInformedAutoencoder
+
+Physics-informed autoencoder with PDE residual.
+```python
+model = PhysicsInformedAutoencoder(latent_dim=256)
+u_recon, a_recon = model(u)
+residual = model.pde_residual(u_recon, a_recon)
+```
+BayesianCNN
+
+Bayesian CNN with MC Dropout.
+```python
+model = BayesianCNN(num_classes=2, dropout_rate=0.3)
+out = model.predict_with_uncertainty(x, n_samples=50)
+```
+Training
+train_physics_ae
+
+Train physics autoencoder.
+```python
+model, history = train_physics_ae(model, train_loader, val_loader, config)
+```
+train_bayesian_cnn
+
+Train Bayesian CNN.
+```python
+model, history, best_acc = train_bayesian_cnn(model, train_loader, val_loader, config)
+```
+Utils
+EvaluationMetrics
+
+Compute evaluation metrics.
+```python
+metrics = EvaluationMetrics.rejection_quality(
+    phy_scores, unc_scores, labels, preds, tau_phy, tau_unc, lambda_cost
+)
+```
+ThresholdOptimizer
+
+Optimize rejection thresholds.
+```python
+optimizer = ThresholdOptimizer(lambda_cost=0.3)
+tau_phy, tau_unc, risk, p_phy, p_unc = optimizer.optimize(
+    phy_scores, unc_scores, labels, preds
+)
+```
+estimate_lipschitz
+
+Estimate Lipschitz constant.
+```python
+L = estimate_lipschitz(model, dataloader, device)
+```
+Visualization
+generate_figure
+
+Generate 12-panel publication figure.
+```python
+generate_figure(all_metrics, config, seed_results, p_val, save_path='figure.pdf')
+```
