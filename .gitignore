@@ -1,47 +1,37 @@
 # Python
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
 .Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+*.egg-info/
+dist/
+build/
 
-# Notebooks
+# Jupyter
 .ipynb_checkpoints/
-*.ipynb_checkpoints/
+*.ipynb
 
 # Data
+*.pkl
 *.h5
-*.hdf5
 *.npy
-*.npz
-*.mat
-*.raw
-data/
-digital_rocks_data/
-mendeley_data/
-imperial_rock_data/
 
 # Results
 results/
-logs/
+figures/
 checkpoints/
-*.pdf
-*.png
-*.jpg
-*.jpeg
+
+# Environment
+venv/
+env/
+.env
+.conda/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db
+# Logs
+*.log
