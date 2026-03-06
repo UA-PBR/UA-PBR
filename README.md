@@ -1,58 +1,36 @@
 # UA-PBR: Uncertainty-Aware Classifier with Physics-Based Rejection
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Paper](https://img.shields.io/badge/arXiv-2401.12345-b31b1b.svg)](https://arxiv.org/abs/2401.12345)
 
-Official implementation of **UA-PBR: Uncertainty-Aware Classifier with Physics-Based Rejection** - a novel framework combining physics-informed learning with Bayesian deep learning for safe prediction with reject option.
+A unified framework combining physics-informed filtering with Bayesian uncertainty quantification for robust scientific machine learning.
 
 ## 📋 Overview
 
-UA-PBR integrates three key components:
-- **Physics-Informed Autoencoder** - Learns physical manifold via PDE residuals
-- **Bayesian CNN** - Quantifies epistemic uncertainty via MC Dropout  
-- **Decision-Theoretic Reject Option** - Optimal threshold selection
+Deep learning classifiers deployed in scientific settings cannot distinguish between clean inputs and corrupted data that violates physical laws. UA-PBR solves this by:
 
-**Key Theorems Implemented:**
-- Theorem 2.1: Physics Autoencoder Convergence
-- Theorem 2.3: Error Bound via PDE Residual
-- Theorem 3.1: ELBO Optimality (Bayesian CNN)
-- Theorem 4.3: Risk Bound for Joint Rejection
-- Theorem 5.1: Optimal Threshold Selection
-- Theorem 6.1/6.2: Statistical Significance Tests
+1. **Physics-Based Filtering**: Physics-informed autoencoder detects inputs violating PDEs
+2. **Bayesian Uncertainty**: Monte Carlo Dropout quantifies predictive entropy
+3. **Decision-Theoretic Rejection**: Joint rejection rule minimizes expected risk
 
-## 🚀 Quick Start
+## 🔬 Key Results (10 seeds)
 
-### Installation
-```python
-git clone https://github.com/yourusername/UA-PBR.git
+| Condition | UA-PBR Risk | Std CNN Risk | Improvement |
+|-----------|-------------|--------------|-------------|
+| Clean | 0.0310 ± 0.0021 | 0.0021 ± 0.0016 | — |
+| Gaussian (0.9) | 0.0393 ± 0.0042 | 0.5005 ± 0.0136 | 92.1% |
+| Salt-Pepper (0.9) | 0.0598 ± 0.0157 | 0.5005 ± 0.0136 | 88.0% |
+| Physics-Violating (0.9) | 0.0338 ± 0.0040 | 0.5005 ± 0.0137 | 93.2% |
+
+**Acceptance Rate (Clean)**: 89.7% ± 0.7%
+**Accuracy on Accepted**: 99.99%
+**Statistical Significance**: p < 0.0001
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/UA-PBR/UA-PBR.git
 cd UA-PBR
 pip install -r requirements.txt
-```
-Run Complete Experiment
-```python
-from uapbr.config.default_config import get_config
-from experiments.run_experiment import run_uapbr_experiment
-
-config = get_config('full_experiment')
-results = run_uapbr_experiment(config)
-```
-📊 Results
-Method	         Accuracy	  Risk (λ=0.3)	  p-value
-Standard CNN	   49.0%	    0.5126        	-
-MC Dropout Only	 46.4%	    -	              -
-UA-PBR (Ours)	   48.5%	    0.3355	        <0.0001
-
-📚 Citation
-```python
-@article{yourname2024uapbr,
-  title={UA-PBR: Uncertainty-Aware Classifier with Physics-Based Rejection},
-  author={Mohsen Mostafa Sayed},
-  journal={Journal of Computational Physics},
-  year={2026}
-}
-```
-
-
-
+pip install -e .
