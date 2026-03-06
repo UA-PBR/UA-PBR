@@ -29,8 +29,53 @@ Deep learning classifiers deployed in scientific settings cannot distinguish bet
 
 ## 📦 Installation
 
-```bash
+```python
 git clone https://github.com/UA-PBR/UA-PBR.git
 cd UA-PBR
 pip install -r requirements.txt
 pip install -e .
+```
+
+🚀 Quick Start
+```python
+from uapbr import UA_PBR
+from uapbr.data import load_darcy_dataset
+
+# Load data
+data = load_darcy_dataset(n_samples=1000)
+
+# Initialize model
+model = UA_PBR(
+    latent_dim=256,
+    dropout_rate=0.3,
+    lambda_cost=0.3
+)
+
+# Train
+model.fit(data.train_loader, data.val_loader)
+
+# Evaluate
+results = model.evaluate(data.test_loader)
+print(results)
+```
+📊 Running Experiments
+```python
+# Production run (10 seeds)
+python experiments/run_production_10seeds.py
+
+# Ablation study
+python experiments/run_ablation.py
+
+# Single seed quick test
+python experiments/run_experiment.py --seed 42
+```
+📄 Citation
+```python
+@article{mostafa2026uapbr,
+  title={Uncertainty-Aware Classifier with Physics-Based Rejection: 
+         A Unified Framework for Robust Scientific Machine Learning},
+  author={Mostafa, Mohsen},
+  journal={Under Review},
+  year={2026}
+}
+```
